@@ -1,4 +1,4 @@
-name: Package & release Template AppImage
+name: Package & release GitKraken AppImage
 
 on:
   schedule:
@@ -29,14 +29,13 @@ jobs:
     
       - name: Download latest version
         run: |
-          wget -O <customize>.tar.gz "http://<customize>"
-          tar -xzvf <customize>.tar.gz
-        #Do whatever you need
+          wget -O gitkraken.tar.gz https://release.axocdn.com/linux/gitkraken-amd64.tar.gz
+          tar -xzvf gitkraken.tar.gz
 
       - name: Build AppImage
         run: |
-          version=<customize>
-          python3 createAppImage.py --entrypoint=<customize> --name="<customize>" --version=$version  --icon=<customize> --description="<customize>" --desktop="./app.desktop"
+          version=cat gitkraken/version
+          python3 createAppImage.py --entrypoint=gitkraken/gitkraken --name="GitKraken" --version=$version  --icon=gitkraken/gitkraken.png --description="The ultimate Git manager for Linux." --desktop="./app.desktop"
                   
       - name: Upload artifacts
         if: ${{ env.IS_UPDATE == 'true' }}
