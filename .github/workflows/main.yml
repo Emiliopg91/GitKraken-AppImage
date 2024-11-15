@@ -1,4 +1,4 @@
-name: Package & release Postman AppImage
+name: Package & release GitKraken AppImage
 
 on:
   schedule:
