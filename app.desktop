@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name={name}
+GenericName={name}
+X-AppImage-Version={version}
+Comment=Your fancy app on an AppImage.
+Exec={entrypoint}
+Icon={icon}
+Categories=Utilities;
+StartupNotify=true
+Keywords=template;
