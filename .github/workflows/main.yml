@@ -34,8 +34,7 @@ jobs:
 
       - name: Build AppImage
         run: |
-          ls -lah gitkraken/
-          version=cat gitkraken/version
+          version=$(cat gitkraken/version)
           python3 createAppImage.py --entrypoint=gitkraken/gitkraken --name="GitKraken" --version=$version  --icon=gitkraken/gitkraken.png --description="The ultimate Git manager for Linux." --desktop="./app.desktop"
                   
       - name: Upload artifacts
