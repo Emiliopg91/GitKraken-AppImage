@@ -35,26 +35,14 @@ jobs:
         run: |
           tar -xzvf ./binaries.tar.gz
 
-      - name: Get version
-        id: get_version
-        run: |
-          version=$(cat gitkraken/version)
-          echo "version=$version" >> $GITHUB_ENV
-
       - name: Generate AppImage
-        uses: Emiliopg91/AppImage-Creator@1.1.7
-        with: 
-          entrypoint: "./gitkraken/gitkraken"
-          name: "GitKraken" 
-          version: "${{ env.version }}"
-          icon: "./gitkraken/gitkraken.png"
-          desktop: "./app.desktop"
+        uses: Emiliopg91/AppImage-Creator@1.2.0
         
       - name: Consolidate output
         id: consolidate_output
         run: |
           echo "is_update=${{ env.IS_UPDATE }}" >> $GITHUB_OUTPUT
-          echo "version=${{ env.version }}" >> $GITHUB_OUTPUT
+          echo "version=${{ env.APP_VERSION }}" >> $GITHUB_OUTPUT
 
   create-release:
     name: Create Release
