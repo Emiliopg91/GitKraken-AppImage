@@ -1,8 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name={name}
-GenericName={name}
+Name=GitKraken
 X-AppImage-Version={version}
 Comment={description}
 Exec={entrypoint}
@@ -10,3 +9,8 @@ Icon={icon}
 Categories=Development;
 StartupNotify=true
 Keywords=gitkraken;GitKraken;git;Git;
+
+[AppImage Creator]
+Entrypoint=./gitkraken/gitkraken
+Icon=./gitkraken/gitkraken.png
+Version-Cmd=cat gitkraken/version
