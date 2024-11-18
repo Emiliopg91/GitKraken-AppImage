@@ -14,3 +14,4 @@ Keywords=gitkraken;GitKraken;git;Git;
 Entrypoint=./gitkraken/gitkraken
 Icon=./gitkraken/gitkraken.png
 Version-Cmd=cat gitkraken/version
+Binaries-Url=https://release.axocdn.com/linux/gitkraken-amd64.tar.gz
