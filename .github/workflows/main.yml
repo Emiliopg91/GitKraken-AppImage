@@ -41,7 +41,7 @@ jobs:
       - name: Check for AppImage file
         id: check_appimage
         run: |
-          appimage_file=$(ls ./output/*.AppImage 2>/dev/null | xargs -n 1 basename | head -n 1)
+          appimage_file=$(ls ./output/*.AppImage 2>/dev/null | head -n 1 | xargs -n 1 basename)
           if [ -n "$appimage_file" ]; then
             echo "APPIMAGE_NAME=$appimage_file" >> $GITHUB_ENV
           else
@@ -61,3 +61,4 @@ jobs:
             ${{ env.APPIMAGE_PATH }}
             ${{ env.APPIMAGE_PATH }}.msync
             ${{ env.APPIMAGE_PATH }}.zsync
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
