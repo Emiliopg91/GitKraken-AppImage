@@ -38,9 +38,19 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           electron: false
 
+      - name: Check for AppImage file
+        id: check_appimage
+        run: |
+          appimage_file=$(ls ./output/*.AppImage 2>/dev/null | xargs -n 1 basename | head -n 1)
+          if [ -n "$appimage_file" ]; then
+            echo "APPIMAGE_NAME=$appimage_file" >> $GITHUB_ENV
+          else
+            echo "APPIMAGE_NAME=none" >> $GITHUB_ENV
+          fi
+
       - name: Create GitHub Release
         id: create_release
-        if: env.IS_UPDATE == 'true'
+        if: env.APPIMAGE_NAME != 'none'
         uses: marvinpinto/action-automatic-releases@latest
         with:
           title: ${{ env.APP_VERSION }}
@@ -51,5 +61,3 @@ jobs:
             ${{ env.APPIMAGE_PATH }}
             ${{ env.APPIMAGE_PATH }}.msync
             ${{ env.APPIMAGE_PATH }}.zsync
-            
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
